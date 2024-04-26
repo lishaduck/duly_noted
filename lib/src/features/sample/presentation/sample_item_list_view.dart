@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../settings/settings_view.dart';
-import 'sample_item.dart';
+import '../../../../gen/assets.gen.dart';
+import '../../../utils/settings/settings_view.dart';
+import '../application/sample_items_service.dart';
 import 'sample_item_details_view.dart';
 
 /// Displays a list of SampleItems.
-class SampleItemListView extends StatelessWidget {
+class SampleItemListView extends ConsumerWidget {
   const SampleItemListView({
     super.key,
-    this.items = const [SampleItem(1), SampleItem(2), SampleItem(3)],
   });
 
   static const routeName = '/';
 
-  final List<SampleItem> items;
-
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final items = ref.watch(sampleItemsServiceProvider).items;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Sample Items'),
@@ -50,9 +51,9 @@ class SampleItemListView extends StatelessWidget {
 
           return ListTile(
             title: Text('SampleItem ${item.id}'),
-            leading: const CircleAvatar(
+            leading: CircleAvatar(
               // Display the Flutter Logo image asset.
-              foregroundImage: AssetImage('assets/icons/logo.png'),
+              foregroundImage: Assets.icons.logo.provider(),
             ),
             onTap: () {
               // Navigate to the details page. If the user leaves and returns to
