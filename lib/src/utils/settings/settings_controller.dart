@@ -1,10 +1,9 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
-
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../utils/settings/preferences.dart';
+import 'initial_settings.dart';
 import 'settings_model.dart';
 
 part 'settings_controller.g.dart';
@@ -18,11 +17,8 @@ part 'settings_controller.g.dart';
 class SettingsController extends _$SettingsController {
   @override
   SettingsModel build() {
-    return const SettingsModel(themeMode: ThemeMode.system);
+    return ref.watch(initialSettingsProvider);
   }
-
-  /// Load the user's settings from a local database or the internet.
-  Future<void> loadSettings() async {}
 
   /// Update and persist the ThemeMode based on the user's selection.
   Future<void> updateSettings(SettingsModel? settingsModel) async {

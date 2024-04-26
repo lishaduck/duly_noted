@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../utils/settings/initial_settings.dart';
 import '../utils/settings/preferences.dart';
 import '../utils/settings/settings_controller.dart';
 
@@ -19,6 +20,7 @@ mixin Bootstrap on Widget {
     Future<SharedPreferences> Function() getSharedPreferences,
   ) async {
     final prefs = await getSharedPreferences();
+    final initialSettings = await loadSettings(prefs);
 
     // Run the app and pass in the SettingsController. The app listens to the
     // SettingsController for changes, then passes it further down to the
@@ -27,6 +29,7 @@ mixin Bootstrap on Widget {
       this,
       overrides: [
         sharedPreferencesProvider.overrideWithValue(prefs),
+        initialSettingsProvider.overrideWithValue(initialSettings),
       ],
     );
   }
