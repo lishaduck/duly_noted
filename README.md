@@ -1,30 +1,11 @@
-# duly_noted
+# Duly Noted
 
-A new Flutter project.
+[![Dart][ci_dart_badge]][ci_dart_link]
+[![style: very good analysis][very_good_analysis_badge]][very_good_analysis_link]
 
-## Getting Started
+Better time management for busy people.
 
-This project is a starting point for a Flutter application that follows the
-[simple app state management
-tutorial](https://flutter.dev/docs/development/data-and-backend/state-mgmt/simple).
-
-For help getting started with Flutter development, view the
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
-## Assets
-
-The `assets` directory houses images, fonts, and any other files you want to
-include with your application.
-
-The `assets/images` directory contains [resolution-aware
-images](https://flutter.dev/docs/development/ui/assets-and-images#resolution-aware).
-
-## Localization
-
-This project generates localized messages based on arb files found in
-the `lib/src/localization` directory.
-
-To support additional languages, please visit the tutorial on
-[Internationalizing Flutter
-apps](https://flutter.dev/docs/development/accessibility-and-localization/internationalization)
+[ci_dart_badge]: https://github.com/PHS-TSA/duly_noted/actions/workflows/ci.yaml/badge.svg?branch=main
+[ci_dart_link]: https://github.com/PHS-TSA/duly_noted/actions/workflows/ci.yaml
+[very_good_analysis_badge]: https://img.shields.io/badge/style-very_good_analysis-B22C89.svg
+[very_good_analysis_link]: https://pub.dev/packages/very_good_analysis

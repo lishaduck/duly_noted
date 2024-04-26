@@ -1,0 +1,6 @@
+dartdoc:
+  showUndocumentedCategories: true
+  includeExternal: ["test/helpers/*.dart"]
+  linkToSource:
+    uriTemplate: "https://github.com/PHS-TSA/duly_noted/blob/main/%f%#L%l%"
+    root: "."

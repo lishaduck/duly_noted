@@ -1,11 +1,11 @@
 {
-    "name": "duly_noted",
-    "short_name": "duly_noted",
+    "name": "Duly Noted",
+    "short_name": "Duly Noted",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "background_color": "#0a9f06",
+    "theme_color": "#0a9f06",
+    "description": "Better time management for busy people.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

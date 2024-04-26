@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "org.psdr3" "\0"
-            VALUE "FileDescription", "duly_noted" "\0"
+            VALUE "FileDescription", "Duly Noted" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "duly_noted" "\0"
+            VALUE "InternalName", "Duly Noted" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2024 org.psdr3. All rights reserved." "\0"
             VALUE "OriginalFilename", "duly_noted.exe" "\0"
-            VALUE "ProductName", "duly_noted" "\0"
+            VALUE "ProductName", "Duly Noted" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END
