@@ -1,59 +1,289 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <!--
+      If you are serving your web app in a path other than the root, change the
+      href value below to reflect the base path you are serving from.
 
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
+      The path provided below has to start and end with a slash "/" in order for
+      it to work correctly.
 
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+      For more details:
+      * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
 
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
-  <base href="$FLUTTER_BASE_HREF">
+      This is a placeholder for base href that will be replaced by the value of
+      the `--base-href` argument provided to `flutter build`.
+    -->
+    <base href="$FLUTTER_BASE_HREF" />
 
-  <meta charset="UTF-8">
-  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+    <title>Duly Noted</title>
+    <meta
+      name="description"
+      content="Better time management for busy people."
+    />
 
-  <!-- iOS meta tags & icons -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="duly_noted">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+    <!-- iOS meta tags & icons -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="apple-mobile-web-app-title" content="Duly Noted" />
+    <link rel="apple-touch-icon" href="icons/Icon-192.png" />
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png" />
 
-  <title>duly_noted</title>
-  <link rel="manifest" href="manifest.json">
+    <link rel="manifest" href="manifest.json" />
+    <style type="text/css">
+      body.loading-mode {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      div.progress-bar {
+        border: 1px solid blue;
+        width: 250px;
+        height: 50px;
+      }
+      div.progress-indicator {
+        background-color: blue;
+        height: 100%;
+        width: 0%;
+      }
+    </style>
 
-  <script>
-    // The value below is injected by flutter build, do not touch.
-    const serviceWorkerVersion = null;
-  </script>
-  <!-- This script adds the flutter initialization JS code -->
-  <script src="flutter.js" defer></script>
-</head>
-<body>
-  <script>
-    window.addEventListener('load', function(ev) {
-      // Download main.dart.js
-      _flutter.loader.loadEntrypoint({
-        serviceWorker: {
-          serviceWorkerVersion: serviceWorkerVersion,
-        },
-        onEntrypointLoaded: function(engineInitializer) {
-          engineInitializer.initializeEngine().then(function(appRunner) {
-            appRunner.runApp();
+    <script>
+      // The value below is injected by flutter build, do not touch.
+      var serviceWorkerVersion = null;
+    </script>
+
+    <style id="splash-screen-style">
+      html {
+        height: 100%;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100%;
+        background-color: #0a9f06;
+        background-size: 100% 100%;
+      }
+
+      .center {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+      }
+
+      .contain {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .stretch {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+
+      .cover {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .bottom {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        -ms-transform: translate(-50%, 0);
+        -moz-transform: translate(-50%, 0);
+        -o-transform: translate(-50%, 0);
+        -webkit-transform: translate(-50%, 0);
+        transform: translate(-50%, 0);
+      }
+
+      .bottomLeft {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+      }
+
+      .bottomRight {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        body {
+          background-color: #134011;
+        }
+      }
+    </style>
+    <script id="splash-screen-script">
+      function removeSplashFromWeb() {
+        document.getElementById("splash")?.remove();
+        document.getElementById("splash-branding")?.remove();
+        document.body.style.background = "transparent";
+      }
+    </script>
+  </head>
+
+  <body class="loading-mode">
+    <picture id="splash">
+      <source
+        srcset="
+          splash/img/light-1x.png 1x,
+          splash/img/light-2x.png 2x,
+          splash/img/light-3x.png 3x,
+          splash/img/light-4x.png 4x
+        "
+        media="(prefers-color-scheme: light)"
+      />
+      <source
+        srcset="
+          splash/img/dark-1x.png 1x,
+          splash/img/dark-2x.png 2x,
+          splash/img/dark-3x.png 3x,
+          splash/img/dark-4x.png 4x
+        "
+        media="(prefers-color-scheme: dark)"
+      />
+      <img
+        class="center"
+        aria-hidden="true"
+        src="splash/img/light-1x.png"
+        alt=""
+      />
+    </picture>
+
+    <div id="progress-bar">
+      <div id="progress-indicator"></div>
+    </div>
+    <!--
+      This script installs service_worker.js to provide PWA functionality to
+      application. For more information, see:
+      https://developers.google.com/web/fundamentals/primers/service-workers
+    -->
+    <script>
+      function run() {
+        const progressBar = document.querySelector("#progress-bar");
+        const progressIndicator = document.querySelector("#progress-indicator");
+
+        const additionalScripts = [
+          // Add additional scripts here.
+        ];
+
+        function injectScript(url) {
+          return new Promise(function (resolve) {
+            let scriptTag = document.createElement("script");
+            scriptTag.src = url;
+            scriptTag.type = "application/javascript";
+            scriptTag.onload = function () {
+              resolve();
+            };
+
+            document.body.append(scriptTag);
           });
         }
-      });
-    });
-  </script>
-</body>
+
+        function beginPreloading(manifestAssets) {
+          var assets = [
+            "flutter.js",
+            "main.dart.js",
+            "canvaskit/canvaskit.wasm",
+            "canvaskit/canvaskit.js",
+            ...additionalScripts,
+            ...manifestAssets,
+          ];
+          let totalAssets = assets.length + 1;
+          let loaded = 0;
+
+          const batchSize = 20;
+
+          async function reportProgress() {
+            loaded++;
+            const value = Math.floor((loaded / totalAssets) * 100) + "%";
+            progressIndicator.style.width = value;
+
+            if (assets.length == 0) {
+              dispatchAppLoad();
+            } else {
+              load(assets.shift());
+            }
+          }
+
+          function load(url) {
+            const req = new XMLHttpRequest();
+            req.onload = reportProgress;
+            req.open("get", url);
+            req.send();
+          }
+
+          function startBatch() {
+            const end = Math.min(batchSize, assets.length);
+            for (let i = 0; i < end; i++) {
+              load(assets.shift());
+            }
+          }
+
+          var scriptLoaded = false;
+          async function dispatchAppLoad() {
+            if (scriptLoaded) {
+              return;
+            }
+            scriptLoaded = true;
+
+            for (let i = 0; i < additionalScripts.length; i++) {
+              await injectScript(additionalScripts[i]);
+            }
+
+            await injectScript("flutter.js");
+
+            // Download main.dart.js
+            _flutter.loader.loadEntrypoint({
+              serviceWorker: {
+                serviceWorkerVersion: serviceWorkerVersion,
+              },
+              onEntrypointLoaded: function (engineInitializer) {
+                engineInitializer
+                  .initializeEngine()
+                  .then(async function (appRunner) {
+                    window.addEventListener("flutter-first-frame", function () {
+                      progressBar.remove();
+                      document.body.classList.remove("loading-mode");
+                    });
+
+                    appRunner.runApp();
+                  });
+              },
+            });
+          }
+
+          startBatch();
+        }
+
+        window.addEventListener("load", async function (ev) {
+          const response = await fetch("assets/AssetManifest.json");
+          const manifest = await response.json();
+          const assets = Object.values(manifest)
+            .map((list) => list.map((url) => "assets/" + url))
+            .reduce((arr, cur) => [...arr, ...cur]);
+
+          beginPreloading(assets);
+        });
+      }
+
+      run();
+    </script>
+  </body>
 </html>

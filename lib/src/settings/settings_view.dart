@@ -7,7 +7,7 @@ import 'settings_controller.dart';
 /// When a user changes a setting, the SettingsController is updated and
 /// Widgets that listen to the SettingsController are rebuilt.
 class SettingsView extends StatelessWidget {
-  const SettingsView({super.key, required this.controller});
+  const SettingsView({required this.controller, super.key});
 
   static const routeName = '/settings';
 
@@ -42,7 +42,7 @@ class SettingsView extends StatelessWidget {
             DropdownMenuItem(
               value: ThemeMode.dark,
               child: Text('Dark Theme'),
-            )
+            ),
           ],
         ),
       ),

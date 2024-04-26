@@ -1,0 +1,34 @@
+targets:
+  $default:
+    sources:
+      include:
+        - lib/**.dart
+        # required
+        - pubspec.*
+        ## synthetic files
+        - $package$
+        - lib/$lib$
+    builders:
+      freezed:
+        # configs for the @freezed generator
+        generate_for:
+          - lib/utils/*.dart
+          - lib/features/*/domain/*_model.dart
+          - lib/features/*/domain/*_entity.dart
+        options:
+          map: false
+          when: false
+      riverpod_generator:
+        # configs for the @riverpod generator
+        generate_for:
+          - lib/utils/*.dart
+          - lib/features/*/data/*_repository.dart
+          - lib/features/*/application/*_service.dart
+      flutter_gen_runner:
+        # configs for the flutter.assets generator
+        generate_for:
+          - $package$
+      build_version:build_version:
+        # configs for the packageVersion generator...
+        options:
+          output: lib/gen/version.gen.dart
