@@ -1,8 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 /// Displays detailed information about a SampleItem.
-class SampleItemDetailsView extends StatelessWidget {
-  const SampleItemDetailsView({super.key});
+@RoutePage()
+class SampleItemDetailsPage extends StatelessWidget {
+  const SampleItemDetailsPage({super.key});
 
   static const routeName = '/sample_item';
 

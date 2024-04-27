@@ -115,5 +115,9 @@
       ]
     ]
   },
-  "github-actions.workflows.pinned.workflows": [".github/workflows/dart.yaml"]
+  "github-actions.workflows.pinned.workflows": [".github/workflows/dart.yaml"],
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "always",
+    "source.fixAll": "always"
+  }
 }

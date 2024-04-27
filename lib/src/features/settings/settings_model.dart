@@ -5,6 +5,7 @@ part 'settings_model.freezed.dart';
 part 'settings_model.g.dart';
 
 @freezed
+@immutable
 class SettingsModel with _$SettingsModel {
   const factory SettingsModel({required ThemeMode themeMode}) = _SettingsModel;
 

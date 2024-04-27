@@ -1,4 +1,4 @@
-import 'package:duly_noted/src/app.dart';
+import 'package:duly_noted/src/app/app.dart';
 import 'package:duly_noted/src/app/bootstrap.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';

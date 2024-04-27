@@ -9,6 +9,21 @@ targets:
         - $package$
         - lib/$lib$
     builders:
+      auto_route_generator:
+        # configs for the @RoutePage() generator
+        options:
+          enable_cached_builds: true
+        generate_for:
+          - lib/src/features/*/presentation/*/*_page.dart
+          - lib/src/app/wrapper_page.dart
+      auto_route_generator:auto_router_generator:
+        # configs for the @AutoRouterConfig() generator
+        options:
+          enable_cached_builds: true
+        generate_for:
+          - lib/src/app/router.dart
+      auto_route_generator:auto_router_module_generator:
+        enabled: false
       freezed:
         # configs for the @freezed generator
         generate_for:

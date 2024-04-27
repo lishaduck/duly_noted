@@ -26,9 +26,9 @@ updates:
       riverpod:
         patterns:
           - "*riverpod*"
-      go_router:
+      auto_route:
         patterns:
-          - "go_router*"
+          - "auto_route*"
       freezed:
         patterns:
           - "freezed*"

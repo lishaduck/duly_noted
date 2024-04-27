@@ -1,14 +1,16 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'settings_controller.dart';
+import '../../settings_controller.dart';
 
 /// Displays the various settings that can be customized by the user.
 ///
 /// When a user changes a setting, the SettingsController is updated and
 /// Widgets that listen to the SettingsController are rebuilt.
-class SettingsView extends ConsumerWidget {
-  const SettingsView({super.key});
+@RoutePage()
+class SettingsPage extends ConsumerWidget {
+  const SettingsPage({super.key});
 
   static const routeName = '/settings';
 

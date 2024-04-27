@@ -1,14 +1,15 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../../gen/assets.gen.dart';
-import '../../../utils/settings/settings_view.dart';
-import '../application/sample_items_service.dart';
-import 'sample_item_details_view.dart';
+import '../../../../../gen/assets.gen.dart';
+import '../../../../app/router.dart';
+import '../../application/sample_items_service.dart';
 
 /// Displays a list of SampleItems.
-class SampleItemListView extends ConsumerWidget {
-  const SampleItemListView({
+@RoutePage()
+class SampleItemListPage extends ConsumerWidget {
+  const SampleItemListPage({
     super.key,
   });
 
@@ -21,14 +22,15 @@ class SampleItemListView extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Sample Items'),
+        leading: const AutoLeadingButton(),
         actions: [
           IconButton(
             icon: const Icon(Icons.settings),
-            onPressed: () {
+            onPressed: () async {
               // Navigate to the settings page. If the user leaves and returns
               // to the app after it has been killed while running in the
               // background, the navigation stack is restored.
-              Navigator.restorablePushNamed(context, SettingsView.routeName);
+              await context.router.push(const SettingsRoute());
             },
           ),
         ],
@@ -55,14 +57,11 @@ class SampleItemListView extends ConsumerWidget {
               // Display the Flutter Logo image asset.
               foregroundImage: Assets.icons.logo.provider(),
             ),
-            onTap: () {
+            onTap: () async {
               // Navigate to the details page. If the user leaves and returns to
               // the app after it has been killed while running in the
               // background, the navigation stack is restored.
-              Navigator.restorablePushNamed(
-                context,
-                SampleItemDetailsView.routeName,
-              );
+              await context.router.push(const SampleItemDetailsRoute());
             },
           );
         },

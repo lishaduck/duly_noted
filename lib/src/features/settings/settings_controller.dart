@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../utils/settings/preferences.dart';
 import 'initial_settings.dart';
+import 'preferences.dart';
 import 'settings_model.dart';
 
 part 'settings_controller.g.dart';
