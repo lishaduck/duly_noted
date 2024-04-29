@@ -66,6 +66,7 @@ mocktail
 Pattonville
 pbxproj
 POSIX
+prefs
 psdr3
 pubspec
 riverpod
