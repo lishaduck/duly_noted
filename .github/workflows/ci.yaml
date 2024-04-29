@@ -54,14 +54,14 @@ jobs:
           path: |
             .dart_tool/
             lib/gen/*.gen.dart
-            lib/features/**/*.g.dart
-            lib/features/**/*.freezed.dart
-            lib/utils/*.g.dart
-            lib/utils/*.freezed.dart
-            lib/app/*.gr.dart
-            lib/app/*.gm.dart
-            lib/l10n/app_localizations.dart
-            lib/l10n/app_localizations_*.dart
+            lib/src/features/**/*.g.dart
+            lib/src/features/**/*.freezed.dart
+            lib/src/utils/*.g.dart
+            lib/src/utils/*.freezed.dart
+            lib/src/app/*.gr.dart
+            lib/src/app/*.gm.dart
+            lib/src/l10n/app_localizations.dart
+            lib/src/l10n/app_localizations_*.dart
           key: ${{ runner.os }}-${{ steps.flutter.outputs.CHANNEL }}-dart-${{ hashFiles('**/build.yaml') }}
       - name: 🔌 Generate files
         run: |
@@ -124,14 +124,14 @@ jobs:
           path: |
             .dart_tool/
             lib/gen/*.gen.dart
-            lib/features/**/*.g.dart
-            lib/features/**/*.freezed.dart
-            lib/utils/*.g.dart
-            lib/utils/*.freezed.dart
-            lib/app/*.gr.dart
-            lib/app/*.gm.dart
-            lib/l10n/app_localizations.dart
-            lib/l10n/app_localizations_*.dart
+            lib/src/features/**/*.g.dart
+            lib/src/features/**/*.freezed.dart
+            lib/src/utils/*.g.dart
+            lib/src/utils/*.freezed.dart
+            lib/src/app/*.gr.dart
+            lib/src/app/*.gm.dart
+            lib/src/l10n/app_localizations.dart
+            lib/src/l10n/app_localizations_*.dart
           key: ${{ runner.os }}-${{ steps.flutter.outputs.CHANNEL }}-dart-${{ hashFiles('**/build.yaml') }}
       - name: 🔌 Generate files
         run: |
@@ -177,15 +177,15 @@ jobs:
         with:
           path: |
             .dart_tool/
-            lib/gen/*.gen.dart
-            lib/features/**/*.g.dart
-            lib/features/**/*.freezed.dart
-            lib/utils/*.g.dart
-            lib/utils/*.freezed.dart
-            lib/app/*.gr.dart
-            lib/app/*.gm.dart
-            lib/l10n/app_localizations.dart
-            lib/l10n/app_localizations_*.dart
+            lib/src/gen/*.gen.dart
+            lib/src/features/**/*.g.dart
+            lib/src/features/**/*.freezed.dart
+            lib/src/utils/*.g.dart
+            lib/src/utils/*.freezed.dart
+            lib/src/app/*.gr.dart
+            lib/src/app/*.gm.dart
+            lib/src/l10n/app_localizations.dart
+            lib/src/l10n/app_localizations_*.dart
           key: ${{ runner.os }}-${{ steps.flutter.outputs.CHANNEL }}-dart-${{ hashFiles('**/build.yaml') }}
       - name: 🔌 Generate files
         run: |
@@ -225,15 +225,15 @@ jobs:
         with:
           path: |
             .dart_tool/
-            lib/gen/*.gen.dart
-            lib/features/**/*.g.dart
-            lib/features/**/*.freezed.dart
-            lib/utils/*.g.dart
-            lib/utils/*.freezed.dart
-            lib/app/*.gr.dart
-            lib/app/*.gm.dart
-            lib/l10n/app_localizations.dart
-            lib/l10n/app_localizations_*.dart
+            lib/src/gen/*.gen.dart
+            lib/src/features/**/*.g.dart
+            lib/src/features/**/*.freezed.dart
+            lib/src/utils/*.g.dart
+            lib/src/utils/*.freezed.dart
+            lib/src/app/*.gr.dart
+            lib/src/app/*.gm.dart
+            lib/src/l10n/app_localizations.dart
+            lib/src/l10n/app_localizations_*.dart
           key: ${{ runner.os }}-${{ steps.flutter.outputs.CHANNEL }}-dart-${{ hashFiles('**/build.yaml') }}
       - name: 🔌 Generate files
         run: |
@@ -245,7 +245,17 @@ jobs:
         uses: VeryGoodOpenSource/very_good_coverage@c953fca3e24a915e111cc6f55f03f756dcb3964c # v3.0.0
         with:
           path: coverage/lcov.info
-          min_coverage: 10 # 100
+          min_coverage: 90 # 100
+          exclude: |
+            lib/src/gen/*.gen.dart
+            lib/src/features/**/*.g.dart
+            lib/src/features/**/*.freezed.dart
+            lib/src/utils/*.g.dart
+            lib/src/utils/*.freezed.dart
+            lib/src/app/*.gr.dart
+            lib/src/app/*.gm.dart
+            lib/src/l10n/app_localizations.dart
+            lib/src/l10n/app_localizations_*.dart
 
   format:
     name: Formatting
@@ -326,10 +336,10 @@ jobs:
           persist-credentials: false
           set-safe-directory: true
       - name: 🕵️ Markdown linting
-        uses: DavidAnson/markdownlint-cli2-action@510b996878fc0d1a46c8a04ec86b06dbfba09de7 # v16.0.0
+        uses: DavidAnson/markdownlint-cli2-action@b4c9feab76d8025d1e83c653fa3990936df0e6c8 # v16.0.0
         id: markdownlint
         with:
           fix: true
+          # Surprisingly, the default is to only lint the project root.
           globs: |
             **/*.md
-        continue-on-error: true
