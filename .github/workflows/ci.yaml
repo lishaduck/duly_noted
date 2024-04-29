@@ -246,7 +246,7 @@ jobs:
         with:
           path: coverage/lcov.info
           min_coverage: 90 # 100
-          exclude: |
+          exclude: >-
             lib/src/gen/*.gen.dart
             lib/src/features/**/*.g.dart
             lib/src/features/**/*.freezed.dart
