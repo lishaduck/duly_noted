@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 
 import '../features/sample/presentation/items/sample_item_details_page.dart';
-import '../features/sample/presentation/items/sample_item_list_page.dart';
+import '../features/sample/presentation/items/sample_items_list_page.dart';
 import '../features/settings/presentation/preferences/settings_page.dart';
 import 'wrapper_page.dart';
 
@@ -14,9 +14,7 @@ class AppRouter extends _$AppRouter {
   AppRouter();
 
   @override
-  final defaultRouteType = const RouteType.custom(
-    transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
-  );
+  final defaultRouteType = const RouteType.material();
 
   @override
   List<AutoRoute> get routes => [
@@ -25,12 +23,14 @@ class AppRouter extends _$AppRouter {
           path: '/',
           children: [
             AutoRoute(
-              page: SampleItemListRoute.page,
-              path: 'Sample Items',
+              page: SampleItemsListRoute.page,
+              path: '',
+              title: (context, data) => 'Sample Items',
+              initial: true,
             ),
             AutoRoute(
               page: SampleItemDetailsRoute.page,
-              path: 'sampleItemDetails',
+              path: 'sample-item',
               title: (context, data) => 'Item Details',
             ),
             AutoRoute(

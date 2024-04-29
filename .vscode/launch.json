@@ -9,7 +9,8 @@
       "request": "launch",
       "type": "dart",
       "program": "lib/main.dart",
-      "flutterMode": "debug"
+      "flutterMode": "debug",
+      "args": ["--dart-define=FLUTTER_WEB_DEBUG_SHOW_SEMANTICS=true"]
     }
   ]
 }

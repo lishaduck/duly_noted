@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -30,13 +28,14 @@ class WrapperPage extends ConsumerWidget {
 }
 
 List<Widget> _getActions(String? path) {
-  log('path: $path');
-
   return switch (path) {
     '/' => [
         Builder(
           builder: (context) => IconButton(
-            icon: const Icon(Icons.settings),
+            icon: const Icon(
+              Icons.settings,
+              semanticLabel: 'Settings',
+            ),
             onPressed: () async {
               // Navigate to the settings page. If the user leaves and returns
               // to the app after it has been killed while running in the

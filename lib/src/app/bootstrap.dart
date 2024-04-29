@@ -1,13 +1,12 @@
-import 'package:flutter/material.dart' as flutter show runApp;
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart' as flutter;
+import 'package:flutter/widgets.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../features/settings/initial_settings.dart';
-import '../features/settings/preferences.dart';
-import '../features/settings/settings_controller.dart';
+import '../features/settings/application/settings_service.dart';
+import '../features/settings/data/preferences_repository.dart';
 
 /// Turn any widget into a flow-blown app.
 mixin Bootstrap on Widget {
@@ -16,7 +15,7 @@ mixin Bootstrap on Widget {
   /// This involves
   /// - setting [FlutterError.onError] to log errors to the console,
   /// - calling [usePathUrlStrategy] to use path-style URLs,
-  /// - setting up the [SettingsController] and loading the user's preferences,
+  /// - setting up the [SettingsService] and loading the user's preferences,
   /// - initializing riverpod's [ProviderScope], and
   /// - running the app with [RunApp].
   Future<void> bootstrap(
