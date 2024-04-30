@@ -1,5 +1,5 @@
+// ignore_for_file: scoped_providers_should_specify_dependencies
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart' as flutter;
 import 'package:flutter/widgets.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -17,9 +17,9 @@ mixin Bootstrap on Widget {
   /// - calling [usePathUrlStrategy] to use path-style URLs,
   /// - setting up the [SettingsService] and loading the user's preferences,
   /// - initializing riverpod's [ProviderScope], and
-  /// - running the app with [RunApp].
+  /// - running the app with [runApp].
   Future<void> bootstrap(
-    RunApp runApp,
+    void Function(Widget app) runApp,
     Future<SharedPreferences> Function() getSharedPreferences,
   ) async {
     // Don't use hash style routes.
@@ -37,34 +37,15 @@ mixin Bootstrap on Widget {
     final initialSettings = await loadSettings(prefs);
 
     // Run the app.
-    runApp.runApp(
-      this,
-      overrides: [
-        sharedPreferencesProvider.overrideWithValue(prefs),
-        initialSettingsProvider.overrideWithValue(initialSettings),
-      ],
-    );
-  }
-}
-
-/// {@template RunApp}
-/// Allow mocking runApp in tests.
-/// {@endtemplate}
-class RunApp {
-  /// {@macro RunApp}
-  const RunApp();
-
-  /// See [flutter.runApp]
-  void runApp(
-    Widget app, {
-    List<Override> overrides = const [],
-  }) {
-    flutter.runApp(
+    runApp(
       ProviderScope(
-        overrides: overrides,
+        overrides: [
+          sharedPreferencesProvider.overrideWithValue(prefs),
+          initialSettingsProvider.overrideWithValue(initialSettings),
+        ],
         child: RestorationScope(
           restorationId: 'root',
-          child: app,
+          child: this,
         ),
       ),
     );

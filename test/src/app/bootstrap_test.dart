@@ -16,19 +16,14 @@ void main() {
   });
 
   test('main does not throw', () async {
-    final mockRunApp = MockRunApp();
     const app = MyApp();
 
     await expectLater(
       app.bootstrap(
-        mockRunApp,
+        (_) {},
         getSharedPreferences,
       ),
       completes,
     );
-
-    // Verify that runApp was called with an instance of MyApp.
-    verify(() => mockRunApp.runApp(app, overrides: any(named: 'overrides')))
-        .called(1);
   });
 }

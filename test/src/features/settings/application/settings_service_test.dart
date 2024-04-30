@@ -33,17 +33,17 @@ void main() {
     });
   });
 
-  group('initialPreferences', () {
-    test('should throw an error if initialPreferences is not provided', () {
+  group('initialSettings', () {
+    test('should throw an error if initialSettings are not provided', () {
       // Arrange
       final container = ProviderContainer();
 
-      // Act
-      PreferencesRepository call() =>
-          container.read(preferencesRepositoryProvider);
-
       // Assert
-      expect(call, throwsA(isA<UnimplementedError>()));
+      expect(
+        // Act
+        () => container.read(initialSettingsProvider),
+        throwsA(isA<UnimplementedError>()),
+      );
     });
   });
 }

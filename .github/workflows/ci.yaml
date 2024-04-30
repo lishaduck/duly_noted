@@ -246,16 +246,6 @@ jobs:
         with:
           path: coverage/lcov.info
           min_coverage: 90 # 100
-          exclude: >-
-            lib/src/gen/*.gen.dart
-            lib/src/features/**/*.g.dart
-            lib/src/features/**/*.freezed.dart
-            lib/src/utils/*.g.dart
-            lib/src/utils/*.freezed.dart
-            lib/src/app/*.gr.dart
-            lib/src/app/*.gm.dart
-            lib/src/l10n/app_localizations.dart
-            lib/src/l10n/app_localizations_*.dart
 
   format:
     name: Formatting
