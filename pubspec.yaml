@@ -1,5 +1,5 @@
 name: duly_noted
-description: "Better time management for busy people."
+description: "Better reminders for busy people."
 
 # Prevent accidental publishing to pub.dev.
 publish_to: "none"
