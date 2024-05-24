@@ -60,18 +60,20 @@ packages:
   auto_route:
     dependency: "direct main"
     description:
-      name: auto_route
-      sha256: "6cad3f408863ffff2b5757967c802b18415dac4acb1b40c5cdd45d0a26e5080f"
-      url: "https://pub.dev"
-    source: hosted
+      path: auto_route
+      ref: master
+      resolved-ref: ab219cf7dd717dd359d88b9e5000048179bbaeb3
+      url: "https://github.com/pedromneto97/auto_route_library.git"
+    source: git
     version: "8.1.3"
   auto_route_generator:
     dependency: "direct dev"
     description:
-      name: auto_route_generator
-      sha256: ba28133d3a3bf0a66772bcc98dade5843753cd9f1a8fb4802b842895515b67d3
-      url: "https://pub.dev"
-    source: hosted
+      path: auto_route_generator
+      ref: master
+      resolved-ref: ab219cf7dd717dd359d88b9e5000048179bbaeb3
+      url: "https://github.com/pedromneto97/auto_route_library.git"
+    source: git
     version: "8.0.0"
   bazel_worker:
     dependency: transitive
