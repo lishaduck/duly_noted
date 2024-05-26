@@ -29,7 +29,6 @@ targets:
         generate_for:
           - lib/src/utils/**.dart
           - lib/src/features/*/domain/*_model.dart
-          - lib/src/features/*/domain/*_entity.dart
         options:
           map: false
           when: false
@@ -38,7 +37,6 @@ targets:
         generate_for:
           - lib/src/utils/**.dart
           - lib/src/features/*/domain/*_model.dart
-          - lib/src/features/*/domain/*_entity.dart
       riverpod_generator:
         # configs for the @riverpod generator
         generate_for:
@@ -49,7 +47,7 @@ targets:
         # configs for the flutter.assets generator
         generate_for:
           - $package$
-      build_version:build_version:
+      build_version:
         # configs for the packageVersion generator...
         options:
           output: lib/gen/version.gen.dart
