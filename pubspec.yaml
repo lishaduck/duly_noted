@@ -80,7 +80,7 @@ dev_dependencies:
   freezed: ^2.5.2
   freezed_lint: ^0.0.1
   json_serializable: ^6.8.0
-  mocktail: ^1.0.3
+  mocktail: ^1.0.4
   riverpod_generator: ^2.4.0
   riverpod_lint: ^2.3.10
   very_good_analysis: ^5.1.0
